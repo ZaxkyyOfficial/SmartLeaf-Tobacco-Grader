@@ -1,0 +1,7 @@
+# Gradle cache and generated files
+.gradle/
+.kotlin/
+build/
+app/build/
+local.properties
+.idea/

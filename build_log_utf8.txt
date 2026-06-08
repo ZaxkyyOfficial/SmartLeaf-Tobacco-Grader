@@ -1,0 +1,197 @@
+﻿
+> Configure project :app
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+WARNING: The property android.dependency.excludeLibraryComponentsFromConstraints improves project import performance for very large projects. It should be enabled to improve performance.
+To suppress this warning, add android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false to gradle.properties
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:compileDebugNavigationResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+
+> Task :app:compileDebugKotlin
+./gradlew : e: file://
+/D:/Project%20Antigrav
+ity/SmartLeaf/app/src/
+main/java/com/smartlea
+f/app/ui/navigation/Na
+vGraph.kt:45:61 
+Unresolved reference 
+'fillMaxSize'.
+At line:1 char:1
++ ./gradlew 
+assembleDebug 
+--console=plain > 
+build_log.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~
+    + CategoryInfo    
+          : NotSpeci  
+  fied: (e: file://   
+ /D:/P... 'fillMax    
+Size'.:String) []    
+, RemoteException
+    + FullyQualifiedE 
+   rrorId : NativeCo  
+  mmandError
+ 
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/HomeScreen.kt:70:
+5 Unresolved 
+reference 
+'LaunchedEffect'.
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/YieldAnalyticsDet
+ailScreen.kt:123:70 
+Unresolved reference 
+'CircleShape'.
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/auth/OtpVerificat
+ionScreen.kt:129:45 
+None of the following 
+candidates is 
+applicable:
+
+fun Modifier.padding(p
+addingValues: 
+PaddingValues): 
+Modifier:
+  No parameter with 
+name 'vertical' found.
+  No value passed for 
+parameter 
+'paddingValues'.
+
+fun 
+Modifier.padding(all: 
+Dp): Modifier:
+  No parameter with 
+name 'vertical' found.
+  No value passed for 
+parameter 'all'.
+
+fun Modifier.padding(h
+orizontal: Dp = ..., 
+vertical: Dp = ...): 
+Modifier
+fun Modifier.padding(s
+tart: Dp = ..., top: 
+Dp = ..., end: Dp = 
+..., bottom: Dp = 
+...): Modifier:
+  No parameter with 
+name 'vertical' found.
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/auth/OtpVerificat
+ionScreen.kt:129:53 
+No parameter with 
+name 'symmetric' 
+found.
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/auth/RegisterScre
+en.kt:173:25 
+Unresolved reference 
+'withStyle'.
+e: file:///D:/Project%
+20Antigravity/SmartLea
+f/app/src/main/java/co
+m/smartleaf/app/ui/scr
+eens/auth/RegisterScre
+en.kt:177:25 
+Unresolved reference 
+'withStyle'.
+
+> Task :app:compileDebugKotlin FAILED
+
+[Incubating] Problems report is available at: file:///D:/Project%20Antigravity/SmartLeaf/build/reports/problems/problems-report.html
+
+FAILURE: Build failed 
+with an exception.
+
+* What went wrong:
+Execution failed for 
+task ':app:compileDebu
+gKotlin'.
+> A failure occurred 
+while executing org.je
+tbrains.kotlin.compile
+rRunner.btapi.BuildToo
+lsApiCompilationWork
+   > Compilation 
+error. See log for 
+more details
+
+* Try:
+> Run with 
+--stacktrace option 
+to get the stack 
+trace.
+> Run with --info or 
+--debug option to get 
+more log output.
+> Run with --scan to 
+get full insights 
+from a Build Scan 
+(powered by 
+Develocity).
+> Get more help at htt
+ps://help.gradle.org.
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 4s
+30 actionable tasks: 1 executed, 29 up-to-date
