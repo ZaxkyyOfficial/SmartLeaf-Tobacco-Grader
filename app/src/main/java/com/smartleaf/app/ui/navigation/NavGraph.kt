@@ -2,13 +2,13 @@ package com.smartleaf.app.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.smartleaf.app.ui.AuthState
 import com.smartleaf.app.ui.MainViewModel
+import com.smartleaf.app.ui.theme.VibrantGreen
 import com.smartleaf.app.ui.screens.ScanDetailScreen
 import com.smartleaf.app.ui.screens.YieldAnalyticsDetailScreen
 import com.smartleaf.app.ui.screens.CaptureScreen
@@ -20,13 +20,15 @@ import com.smartleaf.app.ui.screens.auth.LoginScreen
 import com.smartleaf.app.ui.screens.auth.OtpVerificationScreen
 import com.smartleaf.app.ui.screens.auth.RegisterScreen
 import com.smartleaf.app.ui.screens.auth.ResetPasswordScreen
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Surface
+import androidx.compose.ui.Modifier
 
 @Composable
 fun SmartLeafNavGraph(viewModel: MainViewModel) {
     val navController = rememberNavController()
-    val authState by viewModel.authState.collectAsState()
+    val authStateState = viewModel.authState.collectAsStateWithLifecycle()
+    val authState = authStateState.value
 
     NavHost(navController = navController, startDestination = "login") {
         composable("login") {
@@ -41,9 +43,9 @@ fun SmartLeafNavGraph(viewModel: MainViewModel) {
             }
             if ((authState is AuthState.Initializing) || (authState is AuthState.Success)) {
                 // Return a blank surface to prevent flashing the login screen while checking session
-                androidx.compose.material3.Surface(
-                    modifier = androidx.compose.ui.Modifier.fillMaxSize(),
-                    color = com.smartleaf.app.ui.theme.VibrantGreen,
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = VibrantGreen,
                 ) {}
             } else {
                 LoginScreen(
@@ -51,7 +53,7 @@ fun SmartLeafNavGraph(viewModel: MainViewModel) {
                     onNavigateToForgotPassword = { navController.navigate("forgot_password") },
                     onLoginClick = { email, pass -> viewModel.login(email, pass) },
                     errorMessage = (authState as? AuthState.Error)?.message,
-                    isLoading = authState is AuthState.Loading
+                    isLoading = authState is AuthState.Loading,
                 )
             }
         }
@@ -119,7 +121,7 @@ fun SmartLeafNavGraph(viewModel: MainViewModel) {
         }
         composable("home") {
             LaunchedEffect(authState) {
-                if (authState !is AuthState.Success && authState !is AuthState.Initializing) {
+                if ((authState !is AuthState.Success) && (authState !is AuthState.Initializing)) {
                     navController.navigate("login") {
                         popUpTo("home") { inclusive = true }
                     }
@@ -133,20 +135,27 @@ fun SmartLeafNavGraph(viewModel: MainViewModel) {
             )
         }
         composable("capture") {
-            CaptureScreen(viewModel = viewModel, onCaptureSuccess = {
-                navController.navigate("processing") {
-                    popUpTo("home") { inclusive = false }
+            CaptureScreen(
+                viewModel = viewModel,
+                onCaptureSuccess = {
+                    navController.navigate("processing") {
+                        popUpTo("home") { inclusive = false }
+                    }
+                },
+                onBack = {
+                    navController.popBackStack()
                 }
-            }, onBack = {
-                navController.popBackStack()
-            })
+            )
         }
         composable("processing") {
-            ProcessingScreen(viewModel = viewModel, onProcessingComplete = {
-                navController.navigate("results") {
-                    popUpTo("home") { inclusive = false }
+            ProcessingScreen(
+                viewModel = viewModel,
+                onProcessingComplete = {
+                    navController.navigate("results") {
+                        popUpTo("home") { inclusive = false }
+                    }
                 }
-            })
+            )
         }
         composable("results") {
             ResultScreen(

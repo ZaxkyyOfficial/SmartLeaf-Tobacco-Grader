@@ -4,7 +4,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -36,34 +35,39 @@ fun HistoryScreen(viewModel: MainViewModel, onNavigateToDetail: (Long) -> Unit) 
     var selectedItemForEdit by remember { mutableStateOf<SmartLeafResult?>(null) }
     var newScanName by remember { mutableStateOf("") }
 
-    if (showEditDialog && selectedItemForEdit != null) {
-        AlertDialog(
-            onDismissRequest = { showEditDialog = false },
-            title = { Text("Rename Scan", fontWeight = FontWeight.Bold) },
-            text = {
-                OutlinedTextField(
-                    value = newScanName,
-                    onValueChange = { newScanName = it },
-                    label = { Text("Scan Name") },
-                    singleLine = true,
-                    colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = VibrantGreen)
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = {
-                    viewModel.updateScanName(selectedItemForEdit!!.id, newScanName)
-                    showEditDialog = false
-                }) {
-                    Text("Save", color = VibrantGreen, fontWeight = FontWeight.Bold)
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = { showEditDialog = false }) {
-                    Text("Cancel", color = Color.Gray)
-                }
-            },
-            containerColor = Color.White
-        )
+    if (showEditDialog) {
+        val item = selectedItemForEdit
+        if (item != null) {
+            AlertDialog(
+                onDismissRequest = { showEditDialog = false },
+                title = { Text("Rename Scan", fontWeight = FontWeight.Bold) },
+                text = {
+                    OutlinedTextField(
+                        value = newScanName,
+                        onValueChange = { newScanName = it },
+                        label = { Text("Scan Name") },
+                        singleLine = true,
+                        colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = VibrantGreen),
+                    )
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            viewModel.updateScanName(item.id, newScanName)
+                            showEditDialog = false
+                        }
+                    ) {
+                        Text("Save", color = VibrantGreen, fontWeight = FontWeight.Bold)
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = { showEditDialog = false }) {
+                        Text("Cancel", color = Color.Gray)
+                    }
+                },
+                containerColor = Color.White
+            )
+        }
     }
 
     Column(
@@ -132,7 +136,7 @@ fun HistoryScreen(viewModel: MainViewModel, onNavigateToDetail: (Long) -> Unit) 
                             Text(text = displayName, fontWeight = FontWeight.Bold, fontSize = 14.sp)
                             val formattedTime = SimpleDateFormat("dd MMM, HH:mm", Locale.getDefault()).format(Date(item.timestamp))
                             Text(
-                                text = "$formattedTime",
+                                text = formattedTime,
                                 fontSize = 12.sp,
                                 color = Color.Gray
                             )

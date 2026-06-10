@@ -26,23 +26,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-sealed class AuthState {
-    object Initializing : AuthState()
-    object Idle : AuthState()
-    object Loading : AuthState()
-    data class Success(val user: UserEntity) : AuthState()
-    data class AwaitingVerification(val user: UserEntity, val otp: String) : AuthState()
-    data class Error(val message: String) : AuthState()
-}
-
-sealed class ProcessingState {
-    object Idle : ProcessingState()
-    object Capturing : ProcessingState()
-    object Processing : ProcessingState()
-    data class Success(val result: SmartLeafResult) : ProcessingState()
-    data class Error(val message: String) : ProcessingState()
-}
-
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: LeafRepository
     private val userRepository: UserRepository
