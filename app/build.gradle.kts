@@ -76,6 +76,9 @@ dependencies {
     implementation("org.tensorflow:tensorflow-lite:2.17.0")
     implementation("org.tensorflow:tensorflow-lite-gpu:2.17.0")
 
+    // OpenCV Android SDK
+    implementation("org.opencv:opencv:4.9.0")
+
     // Location
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
